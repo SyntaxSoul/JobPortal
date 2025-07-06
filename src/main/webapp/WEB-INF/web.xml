@@ -1,0 +1,59 @@
+
+<web-app>
+  <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>com.jobportal.servlet.common.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+	<servlet>
+		    <servlet-name>LoginServlet</servlet-name>
+		    <servlet-class>com.jobportal.servlet.common.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>LoginServlet</servlet-name>
+	    <url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>PostJobServlet</servlet-name>
+	    <servlet-class>com.jobportal.servlet.recruiter.PostJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>PostJobServlet</servlet-name>
+	    <url-pattern>/PostJobServlet</url-pattern>
+	</servlet-mapping>
+
+	 <servlet>
+	    <servlet-name>ViewPostedJobsServlet</servlet-name>
+	    <servlet-class>com.jobportal.servlet.recruiter.ViewPostedJobsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ViewPostedJobsServlet</servlet-name>
+	    <url-pattern>/ViewPostedJobsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+    <servlet-name>ApplyJobServlet</servlet-name>
+    <servlet-class>com.jobportal.servlet.user.ApplyJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ApplyJobServlet</servlet-name>
+	    <url-pattern>/ApplyJobServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+    <servlet-name>MyApplicationsServlet</servlet-name>
+    <servlet-class>com.jobportal.servlet.user.MyApplicationsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>MyApplicationsServlet</servlet-name>
+	    <url-pattern>/MyApplicationsServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+
+  
+</web-app>
