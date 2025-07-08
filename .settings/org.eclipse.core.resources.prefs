@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/admin-index.jsp=UTF-8
+encoding//src/main/webapp/auth/recruiter-auth.jsp=UTF-8
+encoding//src/main/webapp/common/header.jsp=UTF-8
+encoding//src/main/webapp/footer.jsp=UTF-8
+encoding//src/main/webapp/header.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/main/webapp/register.jsp=UTF-8
 encoding//src/main/webapp/user/my-applications.jsp=UTF-8
+encoding//src/main/webapp/user/my-profile.jsp=UTF-8

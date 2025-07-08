@@ -1,12 +1,8 @@
-<%@ page session="true" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-String type = (String) session.getAttribute("user_type");
-if (type == null || !type.equals("user")) {
-    response.sendRedirect("../login.jsp");
-    return;
-}
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../auth/user-auth.jsp" %>
+<%@ include file="../common/header.jsp" %>
+<%
 String email = (String) session.getAttribute("email");
 if (email == null) {
     response.sendRedirect("../login.jsp");
@@ -57,9 +53,9 @@ if (email == null) {
         <hr>
         <ul>
             <li><a href="external-jobs.jsp">🔎 View Curated Jobs</a></li>
-            <li><a href="companies.jsp">🏢 Browse Companies</a></li>
+            <li><a href="browse-companies.jsp">🏢 Browse Companies</a></li>
             
-            <li><a href="#">📄 My Profile</a></li>
+            <li><a href="../UserProfileServlet">📄 My Profile</a></li>
             <li><a href="<%= request.getContextPath() %>/MyApplicationsServlet">📄 My Applications</a></li>
 
             <li><a href="#">📊 Application Status</a></li>
@@ -68,3 +64,4 @@ if (email == null) {
     </div>
 </body>
 </html>
+<%@ include file="../common/footer.jsp" %>

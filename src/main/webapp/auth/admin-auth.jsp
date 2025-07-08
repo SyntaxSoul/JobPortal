@@ -1,7 +1,7 @@
 <%@ page session="true" %>
 <%
-    String type = (String) session.getAttribute("user_type");
-    if (type == null || !type.equals("admin")) {
+    String role = (String) session.getAttribute("role");
+    if (role == null || !role.equalsIgnoreCase("admin")) {
         response.sendRedirect("../login.jsp");
         return;
     }

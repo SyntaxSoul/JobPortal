@@ -53,7 +53,14 @@
 	    <url-pattern>/MyApplicationsServlet</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <servlet-class>com.jobportal.servlet.user.UserProfileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>UserProfileServlet</servlet-name>
+    	<url-pattern>/UserProfileServlet</url-pattern>
+	</servlet-mapping>
 	
-
   
 </web-app>

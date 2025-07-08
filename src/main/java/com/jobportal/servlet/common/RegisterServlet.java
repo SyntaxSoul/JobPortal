@@ -3,10 +3,9 @@ package com.jobportal.servlet.common;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.sql.*;
 
 import com.jobportal.util.DBConnection;
-
-import java.sql.*;
 
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -15,22 +14,35 @@ public class RegisterServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String userType = request.getParameter("user_type"); // 👈 new
+        String role = request.getParameter("user_type");  // 'jobseeker' or 'recruiter'
 
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(
-                "INSERT INTO users (name, email, password, user_type) VALUES (?, ?, ?, ?)"
-            );
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setString(3, password);
-            stmt.setString(4, userType); // 👈 set user_type
 
-            int rows = stmt.executeUpdate();
+            // Step 1: Insert into login table
+            String loginQuery = "INSERT INTO login (email, password, role) VALUES (?, ?, ?)";
+            PreparedStatement loginStmt = conn.prepareStatement(loginQuery, Statement.RETURN_GENERATED_KEYS);
+            loginStmt.setString(1, email);
+            loginStmt.setString(2, password);
+            loginStmt.setString(3, role);
+            int loginResult = loginStmt.executeUpdate();
 
-            if (rows > 0) {
-                response.sendRedirect("login.jsp?type=" + userType); // redirect based on role
+            if (loginResult > 0) {
+                ResultSet rs = loginStmt.getGeneratedKeys();
+                if (rs.next()) {
+                    int loginId = rs.getInt(1); // Get generated login_id
+
+                    // Step 2: Insert into user_profile (partially filled)
+                    String profileQuery = "INSERT INTO user_profile (login_id, full_name) VALUES (?, ?)";
+                    PreparedStatement profileStmt = conn.prepareStatement(profileQuery);
+                    profileStmt.setInt(1, loginId);
+                    profileStmt.setString(2, name);  // Optionally leave empty
+
+                    profileStmt.executeUpdate();
+
+                    // Step 3: Redirect
+                    response.sendRedirect("login.jsp?type=" + role);
+                }
             } else {
                 response.getWriter().println("Registration failed.");
             }

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+  #role-options {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  #role-options.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  .glow-hover:hover {
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* blueish glow for primary */
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-success.glow-hover:hover {
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.5); /* green glow for success */
+}
